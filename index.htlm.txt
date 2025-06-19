@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigamé en Ligne | Achetez et Vendez en Toute Simplicité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more precise styling */
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: white;
+            margin-top: 2px;
+        }
+        #paymentModal {
+            transition: all 0.3s ease;
+        }
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-store text-2xl"></i>
+                    <h1 class="text-2xl font-bold">MarchéPublic</h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link font-medium">Accueil</a>
+                    <a href="#products" class="nav-link font-medium">Boutiques</a>
+                    <a href="#sellers" class="nav-link font-medium">Marchands</a>
+                    <a href="#about" class="nav-link font-medium">À propos</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button id="authBtn" class="bg-white text-blue-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">Connexion</button>
+                    <button class="md:hidden" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#" class="block py-2">Accueil</a>
+                <a href="#products" class="block py-2">Boutiques</a>
+                <a href="#sellers" class="block py-2">Marchands</a>
+                <a href="#about" class="block py-2">À propos</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Votre marché local, maintenant en ligne</h2>
+                <p class="text-xl mb-8">Achetez des produits frais et artisanaux directement auprès des producteurs locaux. Paiement sécurisé et livraison rapide.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Explorer les produits</button>
+                    <button class="border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">Devenir vendeur</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Marché en ligne" 
+                     class="rounded-lg shadow-2xl max-w-full h-auto max-h-96 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Pourquoi choisir MarchéPublic ?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Paiement sécurisé</h3>
+                    <p class="text-gray-600">Transactions cryptées avec les meilleures technologies de sécurité pour protéger vos achats.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mb-4">
+                        <i class="fas fa-truck text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Livraison rapide</h3>
+                    <p class="text-gray-600">Recevez vos produits en 24-48h avec notre réseau de livraison optimisé.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-purple-500 mb-4">
+                        <i class="fas fa-store text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Marchands vérifiés</h3>
+                    <p class="text-gray-600">Tous nos vendeurs sont authentifiés pour garantir la qualité des produits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold">Nos produits populaires</h2>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-white rounded-lg shadow-sm hover:bg-gray-100">Tout voir</button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700">Catégories <i class="fas fa-chevron-down ml-2"></i></button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://
+</body>
+</html>
